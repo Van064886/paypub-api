@@ -41,7 +41,7 @@ class AuthController extends ApiBaseController
         DB::beginTransaction();
 
         try {
-            $user = $this->userRepo->register($request->all());
+            $user = $this->userRepo->register($request->validated());
             $this->userRepo->sendVerificationCode($user, "Code de vérification de compte", "verify");
 
             // Commit changes and send response

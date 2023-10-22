@@ -64,8 +64,6 @@ class UserController extends ApiBaseController
      */
     public function searchUsersByParams(Request $request): JsonResponse
     {
-        $params = [];
-
         $users = $this->userRepo->findByParams(
             $request->all(),
             $request->get("per_page", 20),
@@ -86,7 +84,7 @@ class UserController extends ApiBaseController
     {
         // Get the authenticated user
         $user = $request->user();
-        $datas = $request->all();
+        $datas = $request->validated();
 
         // Update it's profile with the datas
         DB::beginTransaction();
