@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('enterprises', function (Blueprint $table) {
+        Schema::create('ads_sharing_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->foreignId('activity_sector')->constrained('activity_sectors')
+            $table->foreignId('ads_subscription_id')->constrained('ads_subscriptions')
                 ->onDelete('cascade');
-            $table->foreignId('owner')->constrained('users')->onDelete('cascade');
-            $table->double('balance')->default(0);
+            $table->double('gained_amount');
+            $table->foreignId('social_media_id')->constrained('social_medias')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enterprises');
+        Schema::dropIfExists('ads_sharing_histories');
     }
 };

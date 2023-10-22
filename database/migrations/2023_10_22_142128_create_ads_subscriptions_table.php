@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('enterprises', function (Blueprint $table) {
+        Schema::create('ads_subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->foreignId('activity_sector')->constrained('activity_sectors')
-                ->onDelete('cascade');
-            $table->foreignId('owner')->constrained('users')->onDelete('cascade');
-            $table->double('balance')->default(0);
+            $table->string('code');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('advertisement_id')->constrained('advertisements')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enterprises');
+        Schema::dropIfExists('ads_subscriptions');
     }
 };
