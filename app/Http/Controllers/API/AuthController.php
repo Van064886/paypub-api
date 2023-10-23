@@ -27,7 +27,8 @@ class AuthController extends ApiBaseController
      */
     public function __construct(
         private UserRepositoryInterface $userRepo
-    ) {}
+    ) {
+    }
 
     /**
      * Register user
@@ -93,7 +94,10 @@ class AuthController extends ApiBaseController
                 return $this->errorResponse("Ce code a déja expiré", 422, []);
         } else
             return $this->errorResponse(
-                "Veuillez renseigner des données correctes !", 404, []);
+                "Veuillez renseigner des données correctes !",
+                404,
+                []
+            );
     }
 
 
@@ -126,7 +130,10 @@ class AuthController extends ApiBaseController
 
         $this->userRepo->sendVerificationCode($user, "Code de vérification de compte", "verify");
         return $this->successResponse(
-            "Le code a été envoyé sur votre adresse mail", 200, []);
+            "Le code a été envoyé sur votre adresse mail",
+            200,
+            []
+        );
     }
 
 
