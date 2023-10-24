@@ -21,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'API'], function () {
     require_once "core/auth.php";
     require_once "core/user.php";
+    require_once "core/social_media.php";
 });
