@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Authentication
+ * @group Users
  * @authenticated
  */
 class UserController extends ApiBaseController
