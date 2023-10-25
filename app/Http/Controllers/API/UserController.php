@@ -11,6 +11,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @group Authentication
+ * @authenticated
+ */
 class UserController extends ApiBaseController
 {
     /**
