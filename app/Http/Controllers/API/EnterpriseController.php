@@ -103,6 +103,25 @@ class EnterpriseController extends ApiBaseController
         )->resource);
     }
 
+
+    /**
+     * Get a reservation
+     *
+     * @param Enterprise $enterprise
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getEnterprise(Enterprise $enterprise, Request $request): JsonResponse
+    {
+        // Check if user is allowed to proceed
+        $authorizationResult = $this->checkUserAuthorization($request, $enterprise);
+        if (!is_null($authorizationResult)) return $authorizationResult;
+
+        // Load datas and return enterprise
+        $enterprise->load('owner', 'activitySector');
+        return $this->successResponse(data: new EnterpriseResource($enterprise));
+    }
+
     /**
      * Delete an enterprise
      *

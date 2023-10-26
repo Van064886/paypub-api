@@ -17,7 +17,7 @@ class EnterpriseResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'balance' => $this->balance,
+            'balance' => is_null($this->balance) ? 0 : $this->balance,
             'activity_sector' => new ActivitySectorResource($this->whenLoaded('activitySector')),
             'owner' => $this->getRelation('owner') !== null
                 ? new UserResource($this->getRelation('owner')) : null,
