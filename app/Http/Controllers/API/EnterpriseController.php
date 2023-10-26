@@ -7,14 +7,16 @@ use App\Core\Enterprises\Repositories\Interfaces\EnterpriseRepositoryInterface;
 use App\Core\Enterprises\Requests\AddEnterpriseRequest;
 use App\Core\Enterprises\Requests\SearchEnterpriseRequest;
 use App\Core\Enterprises\Requests\UpdateEnterpriseRequest;
-use App\Core\Users\User;
 use App\Http\Controllers\ApiBaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Resources\EnterpriseResource;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * @group Enterprises
+ * @authenticated
+ */
 class EnterpriseController extends ApiBaseController
 {
     /**

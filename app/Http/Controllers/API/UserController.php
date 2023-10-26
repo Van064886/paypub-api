@@ -20,8 +20,10 @@ class UserController extends ApiBaseController
     /**
      * Class constructor
      */
-    public function __construct(private UserRepositoryInterface $userRepo
-    ) {}
+    public function __construct(
+        private UserRepositoryInterface $userRepo
+    ) {
+    }
 
 
     /**

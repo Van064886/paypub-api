@@ -7,6 +7,11 @@ use App\Http\Controllers\ApiBaseController;
 use App\Http\Resources\SocialMediaResource;
 use Illuminate\Http\JsonResponse;
 
+
+/**
+ * @group Social medias
+ * @authenticated
+ */
 class SocialMediaController extends ApiBaseController
 {
     /**
