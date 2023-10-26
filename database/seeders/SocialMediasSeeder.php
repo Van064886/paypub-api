@@ -13,7 +13,7 @@ class SocialMediasSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('call_to_actions')->insert([
+        DB::table('social_medias')->insert([
             [
                 "name" => "Facebook",
                 "created_at" => now(),
