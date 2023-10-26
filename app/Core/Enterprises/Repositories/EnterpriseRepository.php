@@ -5,6 +5,7 @@ namespace App\Core\Enterprises\Repositories;
 use App\Core\BaseRepository;
 use App\Core\Enterprises\Enterprise;
 use App\Core\Enterprises\Repositories\Interfaces\EnterpriseRepositoryInterface;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class EnterpriseRepository extends BaseRepository implements EnterpriseRepositoryInterface
 {
@@ -49,8 +50,19 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
         return $enterprise;
     }
 
-    public function listEnterprises(array $requestDatas, string $orderBy, int $perPage, int $page, bool $is_admin = false, int $userId = null): array
+    public function listEnterprises(array $requestDatas, string $orderBy, int $perPage, int $page, bool $isAdmin = false, int $userId = null): LengthAwarePaginator
     {
-        // $enterprises = $this->model->where("", $userId)->orderBy($orderBy,
+        $enterprises = $this->model->where($requestDatas)->when(
+            !$isAdmin,
+            function ($query) use ($userId) {
+                $query->where("owner", $userId);
+            }
+        );
+
+        if (isset($requestDatas["name"]))
+            $enterprises->where("name", "LIKE", "%" . $requestDatas["name"] . "%");
+
+        return $enterprises->orderBy($orderBy, "DESC")
+            ->paginate(perPage: $perPage, page: $page);
     }
 }
