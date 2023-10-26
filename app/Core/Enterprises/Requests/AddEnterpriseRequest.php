@@ -23,7 +23,7 @@ class AddEnterpriseRequest extends FormRequest
     {
         return [
             "name" => "string|required",
-            "activity_sector" => "integer|exists:activity_sectors,id",
+            "activity_sector" => "integer|exists:activity_sectors,id"
         ];
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface EnterpriseRepositoryInterface
 {
-    public function add(array $requestDatas, int $owner, int $sector): Enterprise;
+    public function add(array $requestDatas): Enterprise;
 
     public function update(Enterprise $enterprise, array $requestDatas): Enterprise;
 

@@ -21,15 +21,13 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
      * Add an enteprise
      *
      * @param array $requestDatas
-     * @param integer $owner
-     * @param integer $sector
      * @return Enterprise
      */
-    public function add(array $requestDatas, int $owner, int $sector): Enterprise
+    public function add(array $requestDatas): Enterprise
     {
         $enterprise = $this->model->make($requestDatas);
-        $enterprise->owner = $owner;
-        $enterprise->sector = $sector;
+        $enterprise->owner = $requestDatas['owner'];
+        $enterprise->activity_sector = $requestDatas['activity_sector'];
         $enterprise->save();
         return $enterprise;
     }
