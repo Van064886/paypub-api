@@ -107,7 +107,7 @@ class EnterpriseController extends ApiBaseController
 
 
     /**
-     * Get a reservation
+     * Get an enterprise
      *
      * @param Enterprise $enterprise
      * @param Request $request
