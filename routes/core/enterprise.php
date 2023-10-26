@@ -6,13 +6,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'enterprises'], function () {
     Route::post('', [EnterpriseController::class, "addEnterprise"])
         ->middleware(["auth:sanctum"]);
+        
+    Route::put('{enterprise}', [EnterpriseController::class, "updateEnterprise"])
+        ->middleware(["auth:sanctum"]);
 
-    // Route::get('', [EnterpriseController::class, "searchUsersByParams"])
-    //     ->middleware(["auth:sanctum", "isAdmin"]);
-
-    // Route::put('/update-profile', [EnterpriseController::class, "updateProfile"])
-    //     ->middleware(["auth:sanctum"]);
-
-    // Route::delete('', [EnterpriseController::class, "deleteUser"])
-    //     ->middleware(["auth:sanctum"]);
+    Route::delete('{enterprise}', [EnterpriseController::class, "deleteEnterprise"])
+        ->middleware(["auth:sanctum"]);
 });
