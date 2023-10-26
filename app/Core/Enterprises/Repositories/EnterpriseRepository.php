@@ -68,12 +68,13 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
         bool $isAdmin = false,
         int $userId = null
     ): LengthAwarePaginator {
-        $enterprises = $this->model->where($requestDatas)->when(
-            !$isAdmin,
-            function ($query) use ($userId) {
-                $query->where("owner", $userId);
-            }
-        );
+        $enterprises = $this->model->with(['owner', 'activitySector'])
+            ->where($requestDatas)->when(
+                !$isAdmin,
+                function ($query) use ($userId) {
+                    $query->where("owner", $userId);
+                }
+            );
 
         if (isset($requestDatas["name"]))
             $enterprises->where("name", "LIKE", "%" . $requestDatas["name"] . "%");

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Core\Enterprises\Enterprise;
 use App\Core\Enterprises\Repositories\Interfaces\EnterpriseRepositoryInterface;
 use App\Core\Enterprises\Requests\AddEnterpriseRequest;
+use App\Core\Enterprises\Requests\SearchEnterpriseRequest;
 use App\Core\Enterprises\Requests\UpdateEnterpriseRequest;
 use App\Core\Users\User;
 use App\Http\Controllers\ApiBaseController;
@@ -79,6 +80,27 @@ class EnterpriseController extends ApiBaseController
         } catch (Exception $e) {
             return $this->errorResponse();
         }
+    }
+
+    /**
+     * List all enterprise with filter
+     *
+     * @param SearchEnterpriseRequest $request
+     * @return JsonResponse
+     */
+    public function allEnterprises(SearchEnterpriseRequest $request): JsonResponse
+    {
+        $requestDatas = $request->validated();
+        return $this->successResponse(data: EnterpriseResource::collection(
+            $this->enterpriseRepo->listEnterprises(
+                $requestDatas,
+                $request->input('order_by', 'id'),
+                $request->input('per_page', 20),
+                $request->input('page', 1),
+                $request->user()->is_admin,
+                $request->user()->id
+            )
+        )->resource);
     }
 
     /**
