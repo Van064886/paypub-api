@@ -17,6 +17,12 @@ class ActivitySectorsController extends ApiBaseController
     public function __construct()
     {}
 
+
+    /**
+     * Get the list of activity sectors
+     *
+     * @return JsonResponse
+     */
     public function getAll(): JsonResponse
     {
         $result = ActivitySector::all();
