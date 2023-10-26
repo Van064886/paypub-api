@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Core\Enterprises\Repositories\EnterpriseRepository;
+use App\Core\Enterprises\Repositories\Interfaces\EnterpriseRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Core\Users\Repositories\UserRepository;
-use App\Core\Users\Repositories\Interfaces\UserRepositoryInterface; 
+use App\Core\Users\Repositories\Interfaces\UserRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
     protected $models =
     [
         [UserRepositoryInterface::class, UserRepository::class],
+        [EnterpriseRepositoryInterface::class, EnterpriseRepository::class],
     ];
 
     /**

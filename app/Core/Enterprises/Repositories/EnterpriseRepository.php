@@ -50,8 +50,26 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
         return $enterprise;
     }
 
-    public function listEnterprises(array $requestDatas, string $orderBy, int $perPage, int $page, bool $isAdmin = false, int $userId = null): LengthAwarePaginator
-    {
+
+    /**
+     * List all enterprises with filter
+     *
+     * @param array $requestDatas
+     * @param string $orderBy
+     * @param integer $perPage
+     * @param integer $page
+     * @param boolean $isAdmin
+     * @param integer|null $userId
+     * @return LengthAwarePaginator
+     */
+    public function listEnterprises(
+        array $requestDatas,
+        string $orderBy,
+        int $perPage,
+        int $page,
+        bool $isAdmin = false,
+        int $userId = null
+    ): LengthAwarePaginator {
         $enterprises = $this->model->where($requestDatas)->when(
             !$isAdmin,
             function ($query) use ($userId) {
@@ -64,5 +82,16 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
 
         return $enterprises->orderBy($orderBy, "DESC")
             ->paginate(perPage: $perPage, page: $page);
+    }
+
+    /**
+     * Delete an enterprise
+     *
+     * @param Enterprise $enterprise
+     * @return bool | null
+     */
+    public function deleteEnterprise(Enterprise $enterprise): bool | null
+    {
+        return $enterprise->delete();
     }
 }
