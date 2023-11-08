@@ -126,6 +126,21 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POST_ignition-update-config">
                                 <a href="#endpoints-POST_ignition-update-config">POST _ignition/update-config</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETenterprises">
+                                <a href="#endpoints-GETenterprises">List all the advertisements</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTenterprises">
+                                <a href="#endpoints-POSTenterprises">Add new advertisement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETenterprises--advertisement_id-">
+                                <a href="#endpoints-GETenterprises--advertisement_id-">Get enterprise by id</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTenterprises--advertisement_id-">
+                                <a href="#endpoints-PUTenterprises--advertisement_id-">Update an advertisement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEenterprises--advertisement_id-">
+                                <a href="#endpoints-DELETEenterprises--advertisement_id-">Delete an advertisement</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-enterprises" class="tocify-header">
@@ -133,13 +148,7 @@
                     <a href="#enterprises">Enterprises</a>
                 </li>
                                     <ul id="tocify-subheader-enterprises" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="enterprises-GETenterprises">
-                                <a href="#enterprises-GETenterprises">List all enterprise with filter</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="enterprises-POSTenterprises">
-                                <a href="#enterprises-POSTenterprises">Add new enterprise</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="enterprises-GETenterprises--enterprise_id-">
+                                                    <li class="tocify-item level-2" data-unique="enterprises-GETenterprises--enterprise_id-">
                                 <a href="#enterprises-GETenterprises--enterprise_id-">Get an enterprise</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="enterprises-PUTenterprises--enterprise_id-">
@@ -185,7 +194,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 26, 2023</li>
+        <li>Last updated: November 8, 2023</li>
     </ul>
 </div>
 
@@ -472,13 +481,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "firstname=vel"\
-    --form "lastname=tempora"\
-    --form "email=eliane.farrell@example.org"\
-    --form "password=voluptas"\
-    --form "tel=repellendus"\
-    --form "address=beatae"\
-    --form "picture=@/tmp/phpdGhDWn" </code></pre></div>
+    --form "firstname=fugit"\
+    --form "lastname=quidem"\
+    --form "email=kari40@example.com"\
+    --form "password=illum"\
+    --form "tel=deleniti"\
+    --form "address=porro"\
+    --form "picture=@/tmp/phpmCXvxY" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -493,12 +502,12 @@ const headers = {
 };
 
 const body = new FormData();
-body.append('firstname', 'vel');
-body.append('lastname', 'tempora');
-body.append('email', 'eliane.farrell@example.org');
-body.append('password', 'voluptas');
-body.append('tel', 'repellendus');
-body.append('address', 'beatae');
+body.append('firstname', 'fugit');
+body.append('lastname', 'quidem');
+body.append('email', 'kari40@example.com');
+body.append('password', 'illum');
+body.append('tel', 'deleniti');
+body.append('address', 'porro');
 body.append('picture', document.querySelector('input[name="picture"]').files[0]);
 
 fetch(url, {
@@ -522,31 +531,31 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'firstname',
-                'contents' =&gt; 'vel'
+                'contents' =&gt; 'fugit'
             ],
             [
                 'name' =&gt; 'lastname',
-                'contents' =&gt; 'tempora'
+                'contents' =&gt; 'quidem'
             ],
             [
                 'name' =&gt; 'email',
-                'contents' =&gt; 'eliane.farrell@example.org'
+                'contents' =&gt; 'kari40@example.com'
             ],
             [
                 'name' =&gt; 'password',
-                'contents' =&gt; 'voluptas'
+                'contents' =&gt; 'illum'
             ],
             [
                 'name' =&gt; 'tel',
-                'contents' =&gt; 'repellendus'
+                'contents' =&gt; 'deleniti'
             ],
             [
                 'name' =&gt; 'address',
-                'contents' =&gt; 'beatae'
+                'contents' =&gt; 'porro'
             ],
             [
                 'name' =&gt; 'picture',
-                'contents' =&gt; fopen('/tmp/phpdGhDWn', 'r')
+                'contents' =&gt; fopen('/tmp/phpmCXvxY', 'r')
             ],
         ],
     ]
@@ -558,7 +567,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-POSTauth-register">
             <blockquote>
-            <p>Example response (201):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -572,17 +581,9 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;firstname&quot;: &quot;vel&quot;,
-        &quot;lastname&quot;: &quot;tempora&quot;,
-        &quot;email&quot;: &quot;eliane.farrell@example.org&quot;,
-        &quot;tel&quot;: null,
-        &quot;address&quot;: null,
-        &quot;is_admin&quot;: null,
-        &quot;picture&quot;: &quot;http://localhost/uploads/users/RlBWKPOQweHXZBs3BRlvYQrDi.jpg&quot;
-    },
-    &quot;is_success&quot;: true,
-    &quot;success_message&quot;: &quot;Cr&eacute;ation de compte reussie&quot;
+    &quot;data&quot;: [],
+    &quot;is_success&quot;: false,
+    &quot;error_message&quot;: &quot;\n The password field must be at least 8 characters.&quot;
 }</code>
  </pre>
     </span>
@@ -673,10 +674,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="firstname"                data-endpoint="POSTauth-register"
-               value="vel"
+               value="fugit"
                data-component="body">
     <br>
-<p>Example: <code>vel</code></p>
+<p>Example: <code>fugit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>lastname</code></b>&nbsp;&nbsp;
@@ -684,10 +685,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="lastname"                data-endpoint="POSTauth-register"
-               value="tempora"
+               value="quidem"
                data-component="body">
     <br>
-<p>Example: <code>tempora</code></p>
+<p>Example: <code>quidem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -695,10 +696,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTauth-register"
-               value="eliane.farrell@example.org"
+               value="kari40@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>eliane.farrell@example.org</code></p>
+<p>Must be a valid email address. Example: <code>kari40@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -706,10 +707,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTauth-register"
-               value="voluptas"
+               value="illum"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>illum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>tel</code></b>&nbsp;&nbsp;
@@ -717,10 +718,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="tel"                data-endpoint="POSTauth-register"
-               value="repellendus"
+               value="deleniti"
                data-component="body">
     <br>
-<p>Example: <code>repellendus</code></p>
+<p>Example: <code>deleniti</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -728,10 +729,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="address"                data-endpoint="POSTauth-register"
-               value="beatae"
+               value="porro"
                data-component="body">
     <br>
-<p>Example: <code>beatae</code></p>
+<p>Example: <code>porro</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>picture</code></b>&nbsp;&nbsp;
@@ -742,7 +743,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 4000 kilobytes. Example: <code>/tmp/phpdGhDWn</code></p>
+<p>Must be an image. Must not be greater than 4000 kilobytes. Example: <code>/tmp/phpmCXvxY</code></p>
         </div>
         </form>
 
@@ -765,8 +766,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"homenick.shania@example.org\",
-    \"code\": \"adipisci\"
+    \"email\": \"ward.zachariah@example.com\",
+    \"code\": \"eum\"
 }"
 </code></pre></div>
 
@@ -783,8 +784,8 @@ const headers = {
 };
 
 let body = {
-    "email": "homenick.shania@example.org",
-    "code": "adipisci"
+    "email": "ward.zachariah@example.com",
+    "code": "eum"
 };
 
 fetch(url, {
@@ -806,8 +807,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'homenick.shania@example.org',
-            'code' =&gt; 'adipisci',
+            'email' =&gt; 'ward.zachariah@example.com',
+            'code' =&gt; 'eum',
         ],
     ]
 );
@@ -925,10 +926,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTauth-verify-email"
-               value="homenick.shania@example.org"
+               value="ward.zachariah@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>homenick.shania@example.org</code></p>
+<p>Must be a valid email address. Example: <code>ward.zachariah@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
@@ -936,10 +937,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="code"                data-endpoint="POSTauth-verify-email"
-               value="adipisci"
+               value="eum"
                data-component="body">
     <br>
-<p>Example: <code>adipisci</code></p>
+<p>Example: <code>eum</code></p>
         </div>
         </form>
 
@@ -962,7 +963,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"gregorio56@example.org\"
+    \"email\": \"borer.glen@example.net\"
 }"
 </code></pre></div>
 
@@ -979,7 +980,7 @@ const headers = {
 };
 
 let body = {
-    "email": "gregorio56@example.org"
+    "email": "borer.glen@example.net"
 };
 
 fetch(url, {
@@ -1001,7 +1002,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'gregorio56@example.org',
+            'email' =&gt; 'borer.glen@example.net',
         ],
     ]
 );
@@ -1119,10 +1120,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTauth-password-forgotten"
-               value="gregorio56@example.org"
+               value="borer.glen@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>gregorio56@example.org</code></p>
+<p>Must be a valid email address. Example: <code>borer.glen@example.net</code></p>
         </div>
         </form>
 
@@ -1145,9 +1146,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"krajcik.shanna@example.net\",
-    \"code\": \"debitis\",
-    \"password\": \"+h+;$l9bKa\\\"&lt;\\\"%[A\"
+    \"email\": \"kautzer.sharon@example.org\",
+    \"code\": \"consectetur\",
+    \"password\": \"V`=#+d*b.:9vVSX_R{\"
 }"
 </code></pre></div>
 
@@ -1164,9 +1165,9 @@ const headers = {
 };
 
 let body = {
-    "email": "krajcik.shanna@example.net",
-    "code": "debitis",
-    "password": "+h+;$l9bKa\"&lt;\"%[A"
+    "email": "kautzer.sharon@example.org",
+    "code": "consectetur",
+    "password": "V`=#+d*b.:9vVSX_R{"
 };
 
 fetch(url, {
@@ -1188,9 +1189,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'krajcik.shanna@example.net',
-            'code' =&gt; 'debitis',
-            'password' =&gt; '+h+;$l9bKa"&lt;"%[A',
+            'email' =&gt; 'kautzer.sharon@example.org',
+            'code' =&gt; 'consectetur',
+            'password' =&gt; 'V`=#+d*b.:9vVSX_R{',
         ],
     ]
 );
@@ -1308,10 +1309,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTauth-reset-password"
-               value="krajcik.shanna@example.net"
+               value="kautzer.sharon@example.org"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>krajcik.shanna@example.net</code></p>
+<p>Must be a valid email address. Example: <code>kautzer.sharon@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
@@ -1319,10 +1320,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="code"                data-endpoint="POSTauth-reset-password"
-               value="debitis"
+               value="consectetur"
                data-component="body">
     <br>
-<p>Example: <code>debitis</code></p>
+<p>Example: <code>consectetur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1330,10 +1331,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTauth-reset-password"
-               value="+h+;$l9bKa"<"%[A"
+               value="V`=#+d*b.:9vVSX_R{"
                data-component="body">
     <br>
-<p>Example: <code>+h+;$l9bKa"&lt;"%[A</code></p>
+<p>Example: <code>V</code>=#+d*b.:9vVSX_R{`</p>
         </div>
         </form>
 
@@ -1356,8 +1357,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"conn.richie@example.net\",
-    \"password\": \"_HOD[V`&amp;\\\\&amp;X0x?fxY\"
+    \"email\": \"rempel.alfonzo@example.com\",
+    \"password\": \"AAEd|{r;t&gt;R\"
 }"
 </code></pre></div>
 
@@ -1374,8 +1375,8 @@ const headers = {
 };
 
 let body = {
-    "email": "conn.richie@example.net",
-    "password": "_HOD[V`&amp;\\&amp;X0x?fxY"
+    "email": "rempel.alfonzo@example.com",
+    "password": "AAEd|{r;t&gt;R"
 };
 
 fetch(url, {
@@ -1397,8 +1398,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'conn.richie@example.net',
-            'password' =&gt; '_HOD[V`&amp;\\&amp;X0x?fxY',
+            'email' =&gt; 'rempel.alfonzo@example.com',
+            'password' =&gt; 'AAEd|{r;t&gt;R',
         ],
     ]
 );
@@ -1516,10 +1517,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTauth-login"
-               value="conn.richie@example.net"
+               value="rempel.alfonzo@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>conn.richie@example.net</code></p>
+<p>Must be a valid email address. Example: <code>rempel.alfonzo@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1527,10 +1528,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTauth-login"
-               value="_HOD[V`&\&X0x?fxY"
+               value="AAEd|{r;t>R"
                data-component="body">
     <br>
-<p>Example: <code>_HOD[V</code>&amp;\&amp;X0x?fxY`</p>
+<p>Example: <code>AAEd|{r;t&gt;R</code></p>
         </div>
         </form>
 
@@ -1553,7 +1554,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"carrie95@example.org\"
+    \"email\": \"fvon@example.org\"
 }"
 </code></pre></div>
 
@@ -1570,7 +1571,7 @@ const headers = {
 };
 
 let body = {
-    "email": "carrie95@example.org"
+    "email": "fvon@example.org"
 };
 
 fetch(url, {
@@ -1592,7 +1593,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'carrie95@example.org',
+            'email' =&gt; 'fvon@example.org',
         ],
     ]
 );
@@ -1710,10 +1711,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTauth-request-code"
-               value="carrie95@example.org"
+               value="fvon@example.org"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>carrie95@example.org</code></p>
+<p>Must be a valid email address. Example: <code>fvon@example.org</code></p>
         </div>
         </form>
 
@@ -1891,8 +1892,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"old_password\": \"voluptas\",
-    \"new_password\": \"earum\"
+    \"old_password\": \"reiciendis\",
+    \"new_password\": \"laudantium\"
 }"
 </code></pre></div>
 
@@ -1909,8 +1910,8 @@ const headers = {
 };
 
 let body = {
-    "old_password": "voluptas",
-    "new_password": "earum"
+    "old_password": "reiciendis",
+    "new_password": "laudantium"
 };
 
 fetch(url, {
@@ -1932,8 +1933,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'old_password' =&gt; 'voluptas',
-            'new_password' =&gt; 'earum',
+            'old_password' =&gt; 'reiciendis',
+            'new_password' =&gt; 'laudantium',
         ],
     ]
 );
@@ -2047,10 +2048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="old_password"                data-endpoint="POSTauth-change-password"
-               value="voluptas"
+               value="reiciendis"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>reiciendis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_password</code></b>&nbsp;&nbsp;
@@ -2058,10 +2059,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="new_password"                data-endpoint="POSTauth-change-password"
-               value="earum"
+               value="laudantium"
                data-component="body">
     <br>
-<p>Example: <code>earum</code></p>
+<p>Example: <code>laudantium</code></p>
         </div>
         </form>
 
@@ -2130,7 +2131,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6ImlmWWNNekI2SFgxWWRndUdkK2xXUGc9PSIsInZhbHVlIjoibVNWSWoyR3UrbXN6cXRNaUdscFBUcDZzNVp5Rk9VVytoWXJxUU1kdkFCWk9oamxaTlhHdVkvYmN1MEd3MTQxK3VWTzlKTWJsWTdmRTJrcWxLVHRDMVFGNzRZSmRHc0NXU0V2S1pUTXE4RWhsS1lDQU1sR2Y3eDJ3YWZXWjFPMmciLCJtYWMiOiJlOTBkMmEwZWRkMjMyMzFjYTYwZjQ0MDQ2YjMwZTRhOTgyOTUzNmQ1YzRkYjQyMTJiMmNjZDU0ZTdmYzEwZTUwIiwidGFnIjoiIn0%3D; expires=Fri, 27 Oct 2023 01:01:47 GMT; Max-Age=7200; path=/; samesite=lax; pubpay_session=eyJpdiI6IjRIWmE3OG0yOWZOa0tQbDdZdzV0a3c9PSIsInZhbHVlIjoiNTVBK3dCV3hqUEh5MFl1S2xTT2IvUGI2Um94emlTcGxDSVBMSEdydmVSZ2NNam1NVXpGWEw4R1lPZXUrZjdodWtQZHFWZTVsK3ZyK0k0NmtCTW1HVWI1OGpVNXh6VUpMQ0VZK1BCL2k5QU9udXcrcFVvb3doY3ZJakdRMmlNeS8iLCJtYWMiOiJkMGNlMDZhYWEwNzhhYjNhZWFlYjZlMjg0NmMyMGRlYTAxOTliM2Q3ZjM3MzlkOWJkYzE1YTYyNGU0YTRmMzU1IiwidGFnIjoiIn0%3D; expires=Fri, 27 Oct 2023 01:01:47 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IjdyK25zazJrdWhNbCtvQy8rdDFWcWc9PSIsInZhbHVlIjoiK09pMFV6dTB3SEswMStjMnZkV2xJS2w5NUM5N3ZFZVlvQ0ZQUy94ZFVGWUhKNWJmejZwVDc2djZsNk5BclhjQXFVZndUek1uY1B4MnYvdmZiNWFMTk5uaFVsWXlSc0hsN3JLT0tuU2M2SXREeXlxV0NVRTYrL04rRzl6a0tQUkwiLCJtYWMiOiI1NmNiODY3NDVhZmIxZjZkNTc4ZGFlYzZkNjU5MzMxOTQzNjQzMjZhN2JiOGViMDg1NDA2ZTRmNGE5NTJmNDkwIiwidGFnIjoiIn0%3D; expires=Wed, 08 Nov 2023 15:37:20 GMT; Max-Age=7200; path=/; samesite=lax; pubpay_session=eyJpdiI6ImZiSDNob1pFd09jOWJwQ2FOK0hPZ0E9PSIsInZhbHVlIjoiaDdJZVlqMXFHcHVzZUdGWmRSQTgxVHJ2bEdzL0pidEk5ODByVkMxRXUwckFBd0tLSi8vaklPVnJrZ1NHMUNjRjlKd3g5TDJUNG9QNTR4MnZTV29kMFEvb0g3cEQyZDJoaXhlOTlCR2NacHVuSnlheTNIa29lb00yVm1jWGs0Zm4iLCJtYWMiOiIxODUzZWM2ZjNmMGE1NGJjODlhM2Y1OTI2ZmRiM2FkZmNkNjk1MDI1NDUzY2U3OTc4YmViN2ZkNDc1MmJmOTEyIiwidGFnIjoiIn0%3D; expires=Wed, 08 Nov 2023 15:37:20 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 <code>Empty response</code>
  </pre>
@@ -2363,7 +2364,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"solution\": \"esse\"
+    \"solution\": \"est\"
 }"
 </code></pre></div>
 
@@ -2379,7 +2380,7 @@ const headers = {
 };
 
 let body = {
-    "solution": "esse"
+    "solution": "est"
 };
 
 fetch(url, {
@@ -2400,7 +2401,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'solution' =&gt; 'esse',
+            'solution' =&gt; 'est',
         ],
     ]
 );
@@ -2505,10 +2506,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="solution"                data-endpoint="POST_ignition-execute-solution"
-               value="esse"
+               value="est"
                data-component="body">
     <br>
-<p>Example: <code>esse</code></p>
+<p>Example: <code>est</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>parameters</code></b>&nbsp;&nbsp;
@@ -2541,7 +2542,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"theme\": \"auto\",
-    \"editor\": \"enim\",
+    \"editor\": \"cumque\",
     \"hide_solutions\": true
 }"
 </code></pre></div>
@@ -2559,7 +2560,7 @@ const headers = {
 
 let body = {
     "theme": "auto",
-    "editor": "enim",
+    "editor": "cumque",
     "hide_solutions": true
 };
 
@@ -2582,7 +2583,7 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'theme' =&gt; 'auto',
-            'editor' =&gt; 'enim',
+            'editor' =&gt; 'cumque',
             'hide_solutions' =&gt; true,
         ],
     ]
@@ -2697,10 +2698,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="editor"                data-endpoint="POST_ignition-update-config"
-               value="enim"
+               value="cumque"
                data-component="body">
     <br>
-<p>Example: <code>enim</code></p>
+<p>Example: <code>cumque</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>hide_solutions</code></b>&nbsp;&nbsp;
@@ -2725,14 +2726,9 @@ Must be one of:
         </div>
         </form>
 
-                <h1 id="enterprises">Enterprises</h1>
-
-    
-
-                                <h2 id="enterprises-GETenterprises">List all enterprise with filter</h2>
+                    <h2 id="endpoints-GETenterprises">List all the advertisements</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -2744,15 +2740,8 @@ Must be one of:
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/enterprises" \
-    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"aut\",
-    \"owner\": 15,
-    \"activity_sector\": 19
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -2761,21 +2750,13 @@ Must be one of:
 );
 
 const headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
-};
-
-let body = {
-    "name": "aut",
-    "owner": 15,
-    "activity_sector": 19
 };
 
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 
@@ -2786,14 +2767,8 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'name' =&gt; 'aut',
-            'owner' =&gt; 15,
-            'activity_sector' =&gt; 19,
         ],
     ]
 );
@@ -2804,7 +2779,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETenterprises">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2816,7 +2791,481 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
+    &quot;message&quot;: &quot;Target class [App\\Core\\Advertisements\\Repositories\\AdvertisementsRepository] does not exist.&quot;,
+    &quot;exception&quot;: &quot;Illuminate\\Contracts\\Container\\BindingResolutionException&quot;,
+    &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+    &quot;line&quot;: 914,
+    &quot;trace&quot;: [
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 795,
+            &quot;function&quot;: &quot;build&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 937,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 296,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 908,
+            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 795,
+            &quot;function&quot;: &quot;build&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 937,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 731,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 922,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 1066,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 982,
+            &quot;function&quot;: &quot;resolveClass&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 943,
+            &quot;function&quot;: &quot;resolveDependencies&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 795,
+            &quot;function&quot;: &quot;build&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 937,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 731,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 922,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;line&quot;: 274,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;line&quot;: 1100,
+            &quot;function&quot;: &quot;getController&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;line&quot;: 1031,
+            &quot;function&quot;: &quot;controllerMiddleware&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 811,
+            &quot;function&quot;: &quot;gatherMiddleware&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 793,
+            &quot;function&quot;: &quot;gatherRouteMiddleware&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 777,
+            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 741,
+            &quot;function&quot;: &quot;runRoute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 730,
+            &quot;function&quot;: &quot;dispatchToRoute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;line&quot;: 200,
+            &quot;function&quot;: &quot;dispatch&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 141,
+            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;line&quot;: 21,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
+            &quot;line&quot;: 31,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;line&quot;: 21,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
+            &quot;line&quot;: 40,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
+            &quot;line&quot;: 27,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
+            &quot;line&quot;: 99,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
+            &quot;line&quot;: 62,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
+            &quot;line&quot;: 39,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 116,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;line&quot;: 175,
+            &quot;function&quot;: &quot;then&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;line&quot;: 144,
+            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 299,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 287,
+            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 92,
+            &quot;function&quot;: &quot;makeApiCall&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 45,
+            &quot;function&quot;: &quot;makeResponseCall&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 35,
+            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;line&quot;: 209,
+            &quot;function&quot;: &quot;__invoke&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;line&quot;: 163,
+            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;line&quot;: 95,
+            &quot;function&quot;: &quot;fetchResponses&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 124,
+            &quot;function&quot;: &quot;processRoute&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 71,
+            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 49,
+            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
+            &quot;line&quot;: 51,
+            &quot;function&quot;: &quot;get&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;line&quot;: 36,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
+            &quot;line&quot;: 41,
+            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;line&quot;: 93,
+            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;line&quot;: 35,
+            &quot;function&quot;: &quot;callBoundMethod&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 662,
+            &quot;function&quot;: &quot;call&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;line&quot;: 211,
+            &quot;function&quot;: &quot;call&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Command/Command.php&quot;,
+            &quot;line&quot;: 326,
+            &quot;function&quot;: &quot;execute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Application.php&quot;,
+            &quot;line&quot;: 1081,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Application.php&quot;,
+            &quot;line&quot;: 320,
+            &quot;function&quot;: &quot;doRunCommand&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Application.php&quot;,
+            &quot;line&quot;: 174,
+            &quot;function&quot;: &quot;doRun&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
+            &quot;line&quot;: 201,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/artisan&quot;,
+            &quot;line&quot;: 35,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        }
+    ]
 }</code>
  </pre>
     </span>
@@ -2837,7 +3286,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETenterprises" data-method="GET"
       data-path="enterprises"
-      data-authed="1"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -2868,17 +3317,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETenterprises"
-               value="Bearer {YOUR_AUTH_KEY}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -2900,46 +3338,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="GETenterprises"
-               value="aut"
-               data-component="body">
-    <br>
-<p>Example: <code>aut</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>owner</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="owner"                data-endpoint="GETenterprises"
-               value="15"
-               data-component="body">
-    <br>
-<p>Example: <code>15</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>activity_sector</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="activity_sector"                data-endpoint="GETenterprises"
-               value="19"
-               data-component="body">
-    <br>
-<p>Example: <code>19</code></p>
-        </div>
-        </form>
+                        </form>
 
-                    <h2 id="enterprises-POSTenterprises">Add new enterprise</h2>
+                    <h2 id="endpoints-POSTenterprises">Add new advertisement</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -2951,12 +3354,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/enterprises" \
-    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"est\",
-    \"activity_sector\": 5
+    \"name\": \"molestiae\",
+    \"description\": \"Et minus recusandae et pariatur adipisci et inventore.\",
+    \"enterprise_id\": 6,
+    \"action_type\": 17,
+    \"action_content\": \"odit\",
+    \"start_date\": \"2034-09-05\",
+    \"end_date\": \"2047-05-18\",
+    \"total_amount\": 86,
+    \"total_clics\": 46
 }"
 </code></pre></div>
 
@@ -2967,14 +3376,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "est",
-    "activity_sector": 5
+    "name": "molestiae",
+    "description": "Et minus recusandae et pariatur adipisci et inventore.",
+    "enterprise_id": 6,
+    "action_type": 17,
+    "action_content": "odit",
+    "start_date": "2034-09-05",
+    "end_date": "2047-05-18",
+    "total_amount": 86,
+    "total_clics": 46
 };
 
 fetch(url, {
@@ -2991,13 +3406,19 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'est',
-            'activity_sector' =&gt; 5,
+            'name' =&gt; 'molestiae',
+            'description' =&gt; 'Et minus recusandae et pariatur adipisci et inventore.',
+            'enterprise_id' =&gt; 6,
+            'action_type' =&gt; 17,
+            'action_content' =&gt; 'odit',
+            'start_date' =&gt; '2034-09-05',
+            'end_date' =&gt; '2047-05-18',
+            'total_amount' =&gt; 86,
+            'total_clics' =&gt; 46,
         ],
     ]
 );
@@ -3008,7 +3429,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-POSTenterprises">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3020,7 +3441,481 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
+    &quot;message&quot;: &quot;Target class [App\\Core\\Advertisements\\Repositories\\AdvertisementsRepository] does not exist.&quot;,
+    &quot;exception&quot;: &quot;Illuminate\\Contracts\\Container\\BindingResolutionException&quot;,
+    &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+    &quot;line&quot;: 914,
+    &quot;trace&quot;: [
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 795,
+            &quot;function&quot;: &quot;build&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 937,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 296,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 908,
+            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 795,
+            &quot;function&quot;: &quot;build&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 937,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 731,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 922,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 1066,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 982,
+            &quot;function&quot;: &quot;resolveClass&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 943,
+            &quot;function&quot;: &quot;resolveDependencies&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 795,
+            &quot;function&quot;: &quot;build&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 937,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 731,
+            &quot;function&quot;: &quot;resolve&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;line&quot;: 922,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;line&quot;: 274,
+            &quot;function&quot;: &quot;make&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;line&quot;: 1100,
+            &quot;function&quot;: &quot;getController&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;line&quot;: 1031,
+            &quot;function&quot;: &quot;controllerMiddleware&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 811,
+            &quot;function&quot;: &quot;gatherMiddleware&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 793,
+            &quot;function&quot;: &quot;gatherRouteMiddleware&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 777,
+            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 741,
+            &quot;function&quot;: &quot;runRoute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;line&quot;: 730,
+            &quot;function&quot;: &quot;dispatchToRoute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;line&quot;: 200,
+            &quot;function&quot;: &quot;dispatch&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 141,
+            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;line&quot;: 21,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
+            &quot;line&quot;: 31,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;line&quot;: 21,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
+            &quot;line&quot;: 40,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
+            &quot;line&quot;: 27,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
+            &quot;line&quot;: 99,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
+            &quot;line&quot;: 62,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
+            &quot;line&quot;: 39,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;line&quot;: 116,
+            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;line&quot;: 175,
+            &quot;function&quot;: &quot;then&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;line&quot;: 144,
+            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 299,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 287,
+            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 92,
+            &quot;function&quot;: &quot;makeApiCall&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 45,
+            &quot;function&quot;: &quot;makeResponseCall&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;line&quot;: 35,
+            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;line&quot;: 209,
+            &quot;function&quot;: &quot;__invoke&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;line&quot;: 163,
+            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;line&quot;: 95,
+            &quot;function&quot;: &quot;fetchResponses&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 124,
+            &quot;function&quot;: &quot;processRoute&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 71,
+            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;line&quot;: 49,
+            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
+            &quot;line&quot;: 51,
+            &quot;function&quot;: &quot;get&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;line&quot;: 36,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
+            &quot;line&quot;: 41,
+            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;line&quot;: 93,
+            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;line&quot;: 35,
+            &quot;function&quot;: &quot;callBoundMethod&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;line&quot;: 662,
+            &quot;function&quot;: &quot;call&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
+            &quot;type&quot;: &quot;::&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;line&quot;: 211,
+            &quot;function&quot;: &quot;call&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Command/Command.php&quot;,
+            &quot;line&quot;: 326,
+            &quot;function&quot;: &quot;execute&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;line&quot;: 180,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Application.php&quot;,
+            &quot;line&quot;: 1081,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Application.php&quot;,
+            &quot;line&quot;: 320,
+            &quot;function&quot;: &quot;doRunCommand&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/symfony/console/Application.php&quot;,
+            &quot;line&quot;: 174,
+            &quot;function&quot;: &quot;doRun&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
+            &quot;line&quot;: 201,
+            &quot;function&quot;: &quot;run&quot;,
+            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        },
+        {
+            &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/artisan&quot;,
+            &quot;line&quot;: 35,
+            &quot;function&quot;: &quot;handle&quot;,
+            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
+            &quot;type&quot;: &quot;-&gt;&quot;
+        }
+    ]
 }</code>
  </pre>
     </span>
@@ -3041,7 +3936,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTenterprises" data-method="POST"
       data-path="enterprises"
-      data-authed="1"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -3072,17 +3967,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTenterprises"
-               value="Bearer {YOUR_AUTH_KEY}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -3111,25 +3995,698 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTenterprises"
-               value="est"
+               value="molestiae"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>molestiae</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>activity_sector</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="activity_sector"                data-endpoint="POSTenterprises"
-               value="5"
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTenterprises"
+               value="Et minus recusandae et pariatur adipisci et inventore."
                data-component="body">
     <br>
-<p>Example: <code>5</code></p>
+<p>Example: <code>Et minus recusandae et pariatur adipisci et inventore.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>enterprise_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="enterprise_id"                data-endpoint="POSTenterprises"
+               value="6"
+               data-component="body">
+    <br>
+<p>Example: <code>6</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>action_type</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="action_type"                data-endpoint="POSTenterprises"
+               value="17"
+               data-component="body">
+    <br>
+<p>Example: <code>17</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>action_content</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="action_content"                data-endpoint="POSTenterprises"
+               value="odit"
+               data-component="body">
+    <br>
+<p>Example: <code>odit</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="POSTenterprises"
+               value="2034-09-05"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>2023-11-08 13:37:21</code>. Example: <code>2034-09-05</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="end_date"                data-endpoint="POSTenterprises"
+               value="2047-05-18"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2047-05-18</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>total_amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="total_amount"                data-endpoint="POSTenterprises"
+               value="86"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>86</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>total_clics</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="total_clics"                data-endpoint="POSTenterprises"
+               value="46"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>46</code></p>
         </div>
         </form>
 
-                    <h2 id="enterprises-GETenterprises--enterprise_id-">Get an enterprise</h2>
+                    <h2 id="endpoints-GETenterprises--advertisement_id-">Get enterprise by id</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETenterprises--advertisement_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/enterprises/2" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/enterprises/2"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/enterprises/2';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETenterprises--advertisement_id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETenterprises--advertisement_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETenterprises--advertisement_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETenterprises--advertisement_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETenterprises--advertisement_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETenterprises--advertisement_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETenterprises--advertisement_id-" data-method="GET"
+      data-path="enterprises/{advertisement_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETenterprises--advertisement_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETenterprises--advertisement_id-"
+                    onclick="tryItOut('GETenterprises--advertisement_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETenterprises--advertisement_id-"
+                    onclick="cancelTryOut('GETenterprises--advertisement_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETenterprises--advertisement_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>enterprises/{advertisement_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETenterprises--advertisement_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETenterprises--advertisement_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>advertisement_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="advertisement_id"                data-endpoint="GETenterprises--advertisement_id-"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the advertisement. Example: <code>2</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTenterprises--advertisement_id-">Update an advertisement</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTenterprises--advertisement_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/enterprises/4" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"voluptate\",
+    \"description\": \"Et libero aut molestiae quam.\",
+    \"enterprise_id\": 9,
+    \"action_type\": 20,
+    \"action_content\": \"animi\",
+    \"start_date\": \"2065-03-06\",
+    \"end_date\": \"2088-12-31\",
+    \"total_amount\": 11,
+    \"total_clics\": 78
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/enterprises/4"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "voluptate",
+    "description": "Et libero aut molestiae quam.",
+    "enterprise_id": 9,
+    "action_type": 20,
+    "action_content": "animi",
+    "start_date": "2065-03-06",
+    "end_date": "2088-12-31",
+    "total_amount": 11,
+    "total_clics": 78
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/enterprises/4';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'voluptate',
+            'description' =&gt; 'Et libero aut molestiae quam.',
+            'enterprise_id' =&gt; 9,
+            'action_type' =&gt; 20,
+            'action_content' =&gt; 'animi',
+            'start_date' =&gt; '2065-03-06',
+            'end_date' =&gt; '2088-12-31',
+            'total_amount' =&gt; 11,
+            'total_clics' =&gt; 78,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTenterprises--advertisement_id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTenterprises--advertisement_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTenterprises--advertisement_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTenterprises--advertisement_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTenterprises--advertisement_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTenterprises--advertisement_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTenterprises--advertisement_id-" data-method="PUT"
+      data-path="enterprises/{advertisement_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTenterprises--advertisement_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTenterprises--advertisement_id-"
+                    onclick="tryItOut('PUTenterprises--advertisement_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTenterprises--advertisement_id-"
+                    onclick="cancelTryOut('PUTenterprises--advertisement_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTenterprises--advertisement_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>enterprises/{advertisement_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>advertisement_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="advertisement_id"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="4"
+               data-component="url">
+    <br>
+<p>The ID of the advertisement. Example: <code>4</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="voluptate"
+               data-component="body">
+    <br>
+<p>Example: <code>voluptate</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="Et libero aut molestiae quam."
+               data-component="body">
+    <br>
+<p>Example: <code>Et libero aut molestiae quam.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>enterprise_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="enterprise_id"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="9"
+               data-component="body">
+    <br>
+<p>Example: <code>9</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>action_type</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="action_type"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="20"
+               data-component="body">
+    <br>
+<p>Example: <code>20</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>action_content</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="action_content"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="animi"
+               data-component="body">
+    <br>
+<p>Example: <code>animi</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="2065-03-06"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>2023-11-08 13:37:21</code>. Example: <code>2065-03-06</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="end_date"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="2088-12-31"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after <code>start_date</code>. Example: <code>2088-12-31</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>total_amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="total_amount"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="11"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>11</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>total_clics</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="total_clics"                data-endpoint="PUTenterprises--advertisement_id-"
+               value="78"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>78</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEenterprises--advertisement_id-">Delete an advertisement</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEenterprises--advertisement_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/enterprises/17" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/enterprises/17"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/enterprises/17';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEenterprises--advertisement_id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEenterprises--advertisement_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEenterprises--advertisement_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEenterprises--advertisement_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEenterprises--advertisement_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEenterprises--advertisement_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEenterprises--advertisement_id-" data-method="DELETE"
+      data-path="enterprises/{advertisement_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEenterprises--advertisement_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEenterprises--advertisement_id-"
+                    onclick="tryItOut('DELETEenterprises--advertisement_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEenterprises--advertisement_id-"
+                    onclick="cancelTryOut('DELETEenterprises--advertisement_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEenterprises--advertisement_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>enterprises/{advertisement_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEenterprises--advertisement_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEenterprises--advertisement_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>advertisement_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="advertisement_id"                data-endpoint="DELETEenterprises--advertisement_id-"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the advertisement. Example: <code>17</code></p>
+            </div>
+                    </form>
+
+                <h1 id="enterprises">Enterprises</h1>
+
+    
+
+                                <h2 id="enterprises-GETenterprises--enterprise_id-">Get an enterprise</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -3310,54 +4867,62 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/enterprises/5" \
+    "http://localhost/enterprises/19" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"name\": \"est\",
-    \"activity_sector\": 4
-}"
-</code></pre></div>
+    --form "name=sit"\
+    --form "activity_sector=7"\
+    --form "logo=@/tmp/phprPipHJ" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/enterprises/5"
+    "http://localhost/enterprises/19"
 );
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "name": "est",
-    "activity_sector": 4
-};
+const body = new FormData();
+body.append('name', 'sit');
+body.append('activity_sector', '7');
+body.append('logo', document.querySelector('input[name="logo"]').files[0]);
 
 fetch(url, {
     method: "PUT",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/enterprises/5';
+$url = 'http://localhost/enterprises/19';
 $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
-            'Content-Type' =&gt; 'application/json',
+            'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
-        'json' =&gt; [
-            'name' =&gt; 'est',
-            'activity_sector' =&gt; 4,
+        'multipart' =&gt; [
+            [
+                'name' =&gt; 'name',
+                'contents' =&gt; 'sit'
+            ],
+            [
+                'name' =&gt; 'activity_sector',
+                'contents' =&gt; '7'
+            ],
+            [
+                'name' =&gt; 'logo',
+                'contents' =&gt; fopen('/tmp/phprPipHJ', 'r')
+            ],
         ],
     ]
 );
@@ -3402,7 +4967,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-PUTenterprises--enterprise_id-" data-method="PUT"
       data-path="enterprises/{enterprise_id}"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTenterprises--enterprise_id-', this);">
@@ -3448,10 +5013,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTenterprises--enterprise_id-"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -3471,10 +5036,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="enterprise_id"                data-endpoint="PUTenterprises--enterprise_id-"
-               value="5"
+               value="19"
                data-component="url">
     <br>
-<p>The ID of the enterprise. Example: <code>5</code></p>
+<p>The ID of the enterprise. Example: <code>19</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3483,10 +5048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTenterprises--enterprise_id-"
-               value="est"
+               value="sit"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>sit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>activity_sector</code></b>&nbsp;&nbsp;
@@ -3494,10 +5059,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="activity_sector"                data-endpoint="PUTenterprises--enterprise_id-"
-               value="4"
+               value="7"
                data-component="body">
     <br>
-<p>Example: <code>4</code></p>
+<p>Example: <code>7</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>logo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="logo"                data-endpoint="PUTenterprises--enterprise_id-"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 4000 kilobytes. Example: <code>/tmp/phprPipHJ</code></p>
         </div>
         </form>
 
@@ -3515,7 +5091,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/enterprises/5" \
+    "http://localhost/enterprises/15" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3523,7 +5099,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/enterprises/5"
+    "http://localhost/enterprises/15"
 );
 
 const headers = {
@@ -3540,7 +5116,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/enterprises/5';
+$url = 'http://localhost/enterprises/15';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3661,10 +5237,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="enterprise_id"                data-endpoint="DELETEenterprises--enterprise_id-"
-               value="5"
+               value="15"
                data-component="url">
     <br>
-<p>The ID of the enterprise. Example: <code>5</code></p>
+<p>The ID of the enterprise. Example: <code>15</code></p>
             </div>
                     </form>
 
@@ -3743,7 +5319,24 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [],
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Facebook&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Instagram&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Whatsapp&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;TikTok&quot;
+        }
+    ],
     &quot;is_success&quot;: true,
     &quot;success_message&quot;: &quot;Succ&egrave;s&quot;
 }</code>
@@ -3849,7 +5442,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/users/atque" \
+    --get "http://localhost/users/illo" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3857,7 +5450,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/users/atque"
+    "http://localhost/users/illo"
 );
 
 const headers = {
@@ -3874,7 +5467,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/users/atque';
+$url = 'http://localhost/users/illo';
 $response = $client-&gt;get(
     $url,
     [
@@ -3995,10 +5588,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETusers--id-"
-               value="atque"
+               value="illo"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>atque</code></p>
+<p>The ID of the user. Example: <code>illo</code></p>
             </div>
                     </form>
 
