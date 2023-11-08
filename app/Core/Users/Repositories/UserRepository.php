@@ -123,6 +123,10 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             $data["picture"] = $this->upload($params['picture'], 'users');
         }
 
+        // Remove verification from account when the email changes
+        if (isset($params['email']))
+            $user->email_verified_at = null;
+
         // Save user changes
         $user->update($data->all());
 

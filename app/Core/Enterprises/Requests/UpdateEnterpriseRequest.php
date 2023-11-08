@@ -24,6 +24,7 @@ class UpdateEnterpriseRequest extends FormRequest
         return [
             "name" => "string|required",
             "activity_sector" => "integer|exists:activity_sectors,id",
+            'logo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:4000'
         ];
     }
 }
