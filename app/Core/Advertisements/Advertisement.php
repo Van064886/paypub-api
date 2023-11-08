@@ -15,12 +15,13 @@ class Advertisement extends Model
 
     const ENTRIES = [
         "name",
-        "reference",
         "description",
         "action_content",
         "start_date",
         "end_date",
-        "picture"
+        "picture",
+        "total_amount",
+        "total_clics"
     ];
 
     protected $fillable = self::ENTRIES;

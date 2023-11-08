@@ -22,6 +22,8 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('action_content');
             $table->string('picture');
+            $table->double('total_amount');
+            $table->integer('total_clics');
             $table->dateTime('start_date')->nullable();
             $table->dateTime('end_date')->nullable();
             $table->timestamps();
