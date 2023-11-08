@@ -5,10 +5,14 @@ namespace App\Core\Enterprises\Repositories;
 use App\Core\BaseRepository;
 use App\Core\Enterprises\Enterprise;
 use App\Core\Enterprises\Repositories\Interfaces\EnterpriseRepositoryInterface;
+use App\Core\Tools\FileUploadTrait;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class EnterpriseRepository extends BaseRepository implements EnterpriseRepositoryInterface
 {
+    use FileUploadTrait;
+
     /**
      * Class constructor
      */
@@ -28,6 +32,12 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
         $enterprise = $this->model->make($requestDatas);
         $enterprise->owner = $requestDatas['owner'];
         $enterprise->activity_sector = $requestDatas['activity_sector'];
+
+        // Store the enterprise logo
+        if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
+            $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'logos');
+        }
+
         $enterprise->save();
         return $enterprise;
     }
@@ -41,8 +51,15 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
      */
     public function update(Enterprise $enterprise, array $requestDatas): Enterprise
     {
+        // Update activity sector if it is provided
         if (isset($requestDatas["activity_sector"]))
             $enterprise->activity_sector = $requestDatas["activity_sector"];
+
+        // Store the enterprise logo
+        if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
+            unlink(public_path()."/logos/$enterprise->logo");
+            $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'logos');
+        }
 
         $enterprise->update($requestDatas);
         return $enterprise;
