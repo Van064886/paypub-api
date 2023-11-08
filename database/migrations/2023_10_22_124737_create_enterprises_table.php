@@ -18,6 +18,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->foreignId('owner')->constrained('users')->onDelete('cascade');
             $table->double('balance')->default(0);
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }

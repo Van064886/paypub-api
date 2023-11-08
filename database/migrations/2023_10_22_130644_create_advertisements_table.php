@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('action_type')->constrained('call_to_actions')
                 ->onDelete('cascade');
             $table->string('action_content');
+            $table->string('picture');
             $table->dateTime('start_date')->nullable();
             $table->dateTime('end_date')->nullable();
             $table->timestamps();

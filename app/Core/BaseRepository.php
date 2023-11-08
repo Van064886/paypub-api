@@ -39,9 +39,9 @@ class BaseRepository
      * @param integer $page
      * @return LengthAwarePaginator
      */
-    public function allWithPagination(string $orderBy = 'id', int $page = 20): LengthAwarePaginator
+    public function allWithPagination(string $orderBy = 'id', int $page = 1, int $perPage = 10): LengthAwarePaginator
     {
-        return $this->model->orderBy($orderBy)->paginate($page);
+        return $this->model->orderBy($orderBy)->paginate(page: $page, perPage: $perPage);
     }
 
     /**
