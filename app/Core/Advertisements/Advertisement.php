@@ -20,6 +20,7 @@ class Advertisement extends Model
         "action_content",
         "start_date",
         "end_date",
+        "picture"
     ];
 
     protected $fillable = self::ENTRIES;

@@ -5,10 +5,14 @@ namespace App\Core\Advertisements\Repositories;
 use App\Core\Advertisements\Advertisement;
 use App\Core\Advertisements\Repositories\Interfaces\AdvertisementsRepositoryInterface;
 use App\Core\BaseRepository;
+use App\Core\Tools\FileUploadTrait;
+use Illuminate\Http\UploadedFile;
 use Ramsey\Uuid\Uuid;
 
 class AdvertisementsRepository extends BaseRepository implements AdvertisementsRepositoryInterface
 {
+    use FileUploadTrait;
+
     /**
      * Class constructor
      */
@@ -29,6 +33,12 @@ class AdvertisementsRepository extends BaseRepository implements AdvertisementsR
         $ads->reference = Uuid::uuid4()->toString();
         $ads->enterprise_id = $requestDatas['enterprise_id'];
         $ads->action_type = $requestDatas['action_type'];
+
+        // Store the ads logo
+        if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
+            $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'ads');
+        }
+
         $ads->save();
         return $ads;
     }
@@ -42,9 +52,20 @@ class AdvertisementsRepository extends BaseRepository implements AdvertisementsR
      */
     public function update(Advertisement $ads, array $requestDatas): Advertisement
     {
+        // Update action type if it is provided
         if (isset($requestDatas['action_type']))
             $ads->action_type = $requestDatas['action_type'];
 
+        // Update ads picture if it is provided
+        if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
+            if (file_exists(public_path("logos/{$ads->picture}"))) {
+                unlink(public_path("logos/{$ads->picture}"));
+            }
+
+            $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'ads');
+        }
+
+        // Save changes and return ads
         $ads->update($requestDatas);
         return $ads;
     }

@@ -55,12 +55,16 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
         if (isset($requestDatas["activity_sector"]))
             $enterprise->activity_sector = $requestDatas["activity_sector"];
 
-        // Store the enterprise logo
+        // Update the enterprise the enterprise logo if it is provided
         if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
-            unlink(public_path()."/logos/$enterprise->logo");
+            if (file_exists(public_path("logos/{$enterprise->logo}"))) {
+                unlink(public_path("logos/{$enterprise->logo}"));
+            }
+
             $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'logos');
         }
 
+        // Update and return enterprise
         $enterprise->update($requestDatas);
         return $enterprise;
     }

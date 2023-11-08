@@ -14,7 +14,8 @@ class Enterprise extends Model
 
     protected $fillable = [
         "name",
-        "balance"
+        "balance",
+        "logo"
     ];
 
     // Relations
