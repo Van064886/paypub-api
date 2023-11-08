@@ -6,6 +6,7 @@ use App\Core\Advertisements\Advertisement;
 use App\Core\Advertisements\Repositories\Interfaces\AdvertisementsRepositoryInterface;
 use App\Core\Advertisements\Requests\AddAdvertisementRequest;
 use App\Core\Advertisements\Requests\UpdateAdvertisementRequest;
+use App\Http\Resources\AdvertisementResource;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class AdvertisementController extends ApiBaseController
     public function canHandleAds(mixed $request, Advertisement $ads): mixed
     {
         $user = $request->user();
-        if( ($ads->enterprise->owner->id !== $user->id) || $user->is_admin) {
+        if (($ads->enterprise->owner->id !== $user->id) || $user->is_admin) {
             return $this->errorResponse(message: "Action non autorisée !", code: 403);
         } else return null;
     }
@@ -74,7 +75,13 @@ class AdvertisementController extends ApiBaseController
         }
     }
 
-    public function listAllAdvertisement(Request $request): JsonResponse
+    /**
+     * List all the advertisements
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function listAll(Request $request): JsonResponse
     {
         $response = $this->advertisementsRepo->allWithPagination(
             $request->input('order_by', 'id'),
@@ -82,7 +89,25 @@ class AdvertisementController extends ApiBaseController
             $request->input('per_page', 10)
         );
 
-        return $this->successResponse(data: $response);
+        return $this->successResponse(data: AdvertisementResource::collection($response)
+            ->resource);
+    }
+
+    /**
+     * Get enterprise by id
+     *
+     * @param Request $request
+     * @param Advertisement $advertisement
+     * @return JsonResponse
+     */
+    public function get(Request $request, Advertisement $advertisement): JsonResponse
+    {
+        // Check if the user is allowed to proceed
+        $canHandle = $this->canHandleAds($request, $advertisement);
+        if (!is_null($canHandle)) return $canHandle;
+
+        // Send response
+        return $this->successResponse(data: new AdvertisementResource($advertisement));
     }
 
     /**
