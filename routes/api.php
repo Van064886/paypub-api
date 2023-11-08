@@ -24,4 +24,5 @@ Route::group(['namespace' => 'API'], function () {
     require_once "core/social_media.php";
     require_once "core/enterprise.php";
     require_once "core/activity_sector.php";
+    require_once "core/advertisement.php";
 });
