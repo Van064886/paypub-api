@@ -21,6 +21,8 @@ class EnterpriseResource extends JsonResource
             'activity_sector' => new ActivitySectorResource($this->whenLoaded('activitySector')),
             'owner' => $this->getRelation('owner') !== null
                 ? new UserResource($this->getRelation('owner')) : null,
+            'picture' => is_null($this->logo) ? null
+                : asset('/uploads/logos') . '/' . $this->logo
         ];
     }
 }
