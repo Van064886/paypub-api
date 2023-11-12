@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('ads_subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('advertisement_id')->constrained('advertisements')->onDelete('cascade');
             $table->timestamps();
