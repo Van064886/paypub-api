@@ -9,7 +9,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface AdsSubscriptionRepositoryInterface
 {
-    public function add(User $user, Advertisement $advertisement): AdsSubscription;
+    public function add(array $requestDatas): AdsSubscription;
+
+    public function canSubscribe(int $user, int $ads): bool;
 
     public function listAllSubscriptions(
         string $orderBy,

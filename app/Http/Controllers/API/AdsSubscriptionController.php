@@ -4,9 +4,13 @@ namespace App\Http\Controllers\API;
 
 use App\Core\AdsSharingHistories\Repositories\Interfaces\AdsSharingHistoryRepositoryInterface;
 use App\Core\AdsSubscriptions\Repositories\Interfaces\AdsSubscriptionRepositoryInterface;
+use App\Core\AdsSubscriptions\Requests\AddSubscriptionRequest;
 use App\Http\Controllers\ApiBaseController;
 use App\Http\Controllers\Controller;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdsSubscriptionController extends ApiBaseController
 {
@@ -19,5 +23,25 @@ class AdsSubscriptionController extends ApiBaseController
     ) {
     }
 
-    public function addSubscription(AddSubscriptionRequest $request)
+    /**
+     * Add subscription
+     *
+     * @param AddSubscriptionRequest $request
+     * @return JsonResponse
+     */
+    public function addSubscription(AddSubscriptionRequest $request): JsonResponse
+    {
+        DB::beginTransaction();
+        try {
+            // Proceed to subscription
+            $adsSubscription = $this->adsSubscriptionRepo->add($request->validated());
+
+            // Generate subscription socials trackers
+            DB::commit();
+            return $this->successResponse();
+        } catch(Exception $e) {
+            DB::rollBack();
+            return $this->errorResponse();
+        }
+    }
 }

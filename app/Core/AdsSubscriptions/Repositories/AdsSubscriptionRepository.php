@@ -22,17 +22,30 @@ class AdsSubscriptionRepository extends BaseRepository implements AdsSubscriptio
     /**
      * Add new ads subscription
      *
-     * @param User $user
-     * @param Advertisement $advertisement
+     * @param array $requestDatas
      * @return AdsSubscription
      */
-    public function add(User $user, Advertisement $advertisement): AdsSubscription
+    public function add(array $requestDatas): AdsSubscription
     {
         $adsSubscription = $this->model;
-        $adsSubscription->user_id = $user->id;
-        $adsSubscription->advertisement_id = $advertisement->id;
+        $adsSubscription->user_id = $requestDatas['user_id'];
+        $adsSubscription->advertisement_id = $requestDatas['advertisement_id'];
         $adsSubscription->save();
         return $adsSubscription;
+    }
+
+    /**
+     * Checks if user can subscribe
+     *
+     * @param integer $user
+     * @param integer $ads
+     * @return boolean
+     */
+    public function canSubscribe(int $user, int $ads): bool
+    {
+        return $this->model->where(
+            ['user_id' => $user, 'advertisement_id' => $ads]
+        )->exists();
     }
 
     /**
