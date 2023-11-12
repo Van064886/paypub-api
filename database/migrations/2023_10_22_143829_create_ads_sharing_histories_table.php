@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ads_sharing_histories', function (Blueprint $table) {
             $table->id();
+            $table->string('token');
             $table->foreignId('ads_subscription_id')->constrained('ads_subscriptions')
                 ->onDelete('cascade');
             $table->double('gained_amount');
