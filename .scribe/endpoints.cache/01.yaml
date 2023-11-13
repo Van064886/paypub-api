@@ -29,7 +29,7 @@ endpoints:
         name: firstname
         description: ''
         required: true
-        example: corrupti
+        example: fugit
         type: string
         enumValues: []
         custom: []
@@ -37,7 +37,7 @@ endpoints:
         name: lastname
         description: ''
         required: true
-        example: voluptatum
+        example: quidem
         type: string
         enumValues: []
         custom: []
@@ -45,7 +45,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: orion45@example.net
+        example: kari40@example.com
         type: string
         enumValues: []
         custom: []
@@ -53,7 +53,7 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: omnis
+        example: illum
         type: string
         enumValues: []
         custom: []
@@ -61,7 +61,7 @@ endpoints:
         name: tel
         description: ''
         required: false
-        example: repellendus
+        example: deleniti
         type: string
         enumValues: []
         custom: []
@@ -69,7 +69,7 @@ endpoints:
         name: address
         description: ''
         required: false
-        example: neque
+        example: porro
         type: string
         enumValues: []
         custom: []
@@ -82,12 +82,12 @@ endpoints:
         enumValues: []
         custom: []
     cleanBodyParameters:
-      firstname: corrupti
-      lastname: voluptatum
-      email: orion45@example.net
-      password: omnis
-      tel: repellendus
-      address: neque
+      firstname: fugit
+      lastname: quidem
+      email: kari40@example.com
+      password: illum
+      tel: deleniti
+      address: porro
     fileParameters:
       picture: null
     responses:
@@ -106,7 +106,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 584V1Pav6fZd3Dcg6kEbhea'
+      - 'Bearer be6ga1Vd54k863haPDcZvEf'
     controller: null
     method: null
     route: null
@@ -137,7 +137,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: nola33@example.com
+        example: ward.zachariah@example.com
         type: string
         enumValues: []
         custom: []
@@ -145,13 +145,13 @@ endpoints:
         name: code
         description: ''
         required: true
-        example: est
+        example: eum
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      email: nola33@example.com
-      code: est
+      email: ward.zachariah@example.com
+      code: eum
     fileParameters: []
     responses:
       -
@@ -169,7 +169,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer EZ1abaf35vkd4gD86cePhV6'
+      - 'Bearer VEge48D1dhPb6a53Zvcf6ka'
     controller: null
     method: null
     route: null
@@ -200,12 +200,12 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: maxime46@example.com
+        example: borer.glen@example.net
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      email: maxime46@example.com
+      email: borer.glen@example.net
     fileParameters: []
     responses:
       -
@@ -223,7 +223,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 4abPvZk635gf1c6eVdhEa8D'
+      - 'Bearer 5g6VahD4cPvdkaZ83eb16Ef'
     controller: null
     method: null
     route: null
@@ -254,7 +254,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: tate.schamberger@example.com
+        example: kautzer.sharon@example.org
         type: string
         enumValues: []
         custom: []
@@ -262,7 +262,7 @@ endpoints:
         name: code
         description: ''
         required: true
-        example: earum
+        example: consectetur
         type: string
         enumValues: []
         custom: []
@@ -270,14 +270,14 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: KtAa;i~.
+        example: 'V`=#+d*b.:9vVSX_R{'
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      email: tate.schamberger@example.com
-      code: earum
-      password: KtAa;i~.
+      email: kautzer.sharon@example.org
+      code: consectetur
+      password: 'V`=#+d*b.:9vVSX_R{'
     fileParameters: []
     responses:
       -
@@ -295,7 +295,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer V5a3hDdeE66b8f4aPgvk1Zc'
+      - 'Bearer g6ac4Zb61fDa5Ph3E8kveVd'
     controller: null
     method: null
     route: null
@@ -326,7 +326,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: vergie17@example.net
+        example: rempel.alfonzo@example.com
         type: string
         enumValues: []
         custom: []
@@ -334,13 +334,13 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: 'M~F~.n`Np]UXga'
+        example: 'AAEd|{r;t>R'
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      email: vergie17@example.net
-      password: 'M~F~.n`Np]UXga'
+      email: rempel.alfonzo@example.com
+      password: 'AAEd|{r;t>R'
     fileParameters: []
     responses:
       -
@@ -358,7 +358,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer P6ah8k63bvfdcD4VE1egZa5'
+      - 'Bearer a3g8V14hb6PfeDa6EkvdcZ5'
     controller: null
     method: null
     route: null
@@ -389,12 +389,12 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: owen55@example.org
+        example: fvon@example.org
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      email: owen55@example.org
+      email: fvon@example.org
     fileParameters: []
     responses:
       -
@@ -412,7 +412,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 6dkZ86gVE3af5Pec4Dhv1ba'
+      - 'Bearer DkbhPa6d65gc18avf4VZE3e'
     controller: null
     method: null
     route: null
@@ -455,7 +455,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer v8ke6Z35cVbfEa6dPDga41h'
+      - 'Bearer aZ6g43EVekP8hDd5v16cbaf'
     controller: null
     method: null
     route: null
@@ -486,7 +486,7 @@ endpoints:
         name: old_password
         description: ''
         required: true
-        example: ex
+        example: reiciendis
         type: string
         enumValues: []
         custom: []
@@ -494,13 +494,13 @@ endpoints:
         name: new_password
         description: ''
         required: true
-        example: nihil
+        example: laudantium
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      old_password: ex
-      new_password: nihil
+      old_password: reiciendis
+      new_password: laudantium
     fileParameters: []
     responses:
       -
@@ -516,7 +516,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer v43EgPVk656ecdDbf8aZah1'
+      - 'Bearer 86haV4ga6e35PDbd1fEvZkc'
     controller: null
     method: null
     route: null

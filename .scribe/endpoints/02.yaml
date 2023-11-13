@@ -23,12 +23,12 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: nostrum
+        example: illo
         type: string
         enumValues: []
         custom: []
     cleanUrlParameters:
-      id: nostrum
+      id: illo
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -48,7 +48,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Zha61aPe4c58vDk3d6gVEbf'
+      - 'Bearer hv66P1gZcfk8VeD5b3daEa4'
     controller: null
     method: null
     route: null
@@ -91,7 +91,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 6avkVdc3PZ8ag4e1hDE5fb6'
+      - 'Bearer a3ZD1Pc68fdV4baEk56ehvg'
     controller: null
     method: null
     route: null
@@ -134,7 +134,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer g4hv1bDVP6E6caek83a5Zfd'
+      - 'Bearer 3P8ZDfVda4b1eag6kcv56hE'
     controller: null
     method: null
     route: null

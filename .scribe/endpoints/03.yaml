@@ -1,0 +1,48 @@
+name: 'Social medias'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: social-medias
+    metadata:
+      groupName: 'Social medias'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get the list of social medias'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":1,"name":"Facebook"},{"id":2,"name":"Instagram"},{"id":3,"name":"Whatsapp"},{"id":4,"name":"TikTok"}],"is_success":true,"success_message":"Succ\u00e8s"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '53'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer aDaZkf4P65VdhbgE1e8v36c'
+    controller: null
+    method: null
+    route: null
+    custom: []
