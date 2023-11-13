@@ -29,15 +29,15 @@ class AdvertisementRepository extends BaseRepository implements AdvertisementRep
      */
     public function add(array $requestDatas): Advertisement
     {
-        $ads = $this->model->make($requestDatas);
-        $ads->reference = Uuid::uuid4()->toString();
-        $ads->enterprise_id = $requestDatas['enterprise_id'];
-        $ads->action_type = $requestDatas['action_type'];
-
         // Store the ads logo
         if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
             $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'ads');
         }
+
+        $ads = $this->model->make($requestDatas);
+        $ads->reference = Uuid::uuid4()->toString();
+        $ads->enterprise_id = $requestDatas['enterprise_id'];
+        $ads->action_type = $requestDatas['action_type'];
 
         $ads->save();
         return $ads;
