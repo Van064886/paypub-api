@@ -38,7 +38,7 @@ class AdsSubscriptionController extends ApiBaseController
 
             // Generate subscription socials trackers
             $this->adsSharingHistoryRepo->add($adsSubscription);
-            $adsSubscription->load('subscri')
+            $adsSubscription->load('sharingHistories');
             DB::commit();
             return $this->successResponse();
         } catch(Exception $e) {

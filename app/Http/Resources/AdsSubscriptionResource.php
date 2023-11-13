@@ -18,6 +18,9 @@ class AdsSubscriptionResource extends JsonResource
             'id' => $this->id,
             'user' => new UserResource($this->whenLoaded('user')),
             'advertisement' => new AdvertisementResource($this->whenLoaded('advertisement')),
+            'sharing_histories' => AdsSharingHistoryResource::collection(
+                $this->whenLoaded('sharingHistories')
+            ),
         ];
     }
 }
