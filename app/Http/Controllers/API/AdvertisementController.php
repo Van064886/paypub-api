@@ -12,6 +12,10 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * @group Advertisements
+ * @authenticated
+ */
 class AdvertisementController extends ApiBaseController
 {
     /**
@@ -34,7 +38,7 @@ class AdvertisementController extends ApiBaseController
             $ads = $this->advertisementsRepo->add($request->validated());
             return $this->successResponse(data: new AdvertisementResource($ads), code: 201);
         } catch (Exception $e) {
-            return $this->errorResponse($e);
+            return $this->errorResponse();
         }
     }
 
@@ -70,7 +74,7 @@ class AdvertisementController extends ApiBaseController
         // Proceed update
         try {
             $ads = $this->advertisementsRepo->update($advertisement, $request->validated());
-            return $this->successResponse();
+            return $this->successResponse(data: new AdvertisementResource($ads));
         } catch (Exception $e) {
             return $this->errorResponse();
         }
