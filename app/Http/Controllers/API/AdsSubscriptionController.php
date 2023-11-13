@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Core\AdsSharingHistories\Repositories\Interfaces\AdsSharingHistoryRepositoryInterface;
 use App\Core\AdsSubscriptions\Repositories\Interfaces\AdsSubscriptionRepositoryInterface;
 use App\Core\AdsSubscriptions\Requests\AddSubscriptionRequest;
+use App\Core\AdsSubscriptions\Requests\FilterAdsSubscriptionRequest;
 use App\Http\Controllers\ApiBaseController;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -46,4 +47,12 @@ class AdsSubscriptionController extends ApiBaseController
             return $this->errorResponse();
         }
     }
+
+    // public function all(FilterAdsSubscriptionRequest $request): JsonResponse
+    // {
+    //     $requestDatas = $request->validated();
+    //     $subscriptions = $this->adsSubscriptionRepo->listAllSubscriptions(
+    //         $request->input(),
+    //     );
+    // }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Core\AdsSubscriptions\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
