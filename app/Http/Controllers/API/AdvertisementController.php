@@ -32,7 +32,7 @@ class AdvertisementController extends ApiBaseController
     {
         try {
             $ads = $this->advertisementsRepo->add($request->validated());
-            return $this->successResponse(data: $ads, code: 201);
+            return $this->successResponse(data: new AdvertisementResource($ads), code: 201);
         } catch (Exception $e) {
             return $this->errorResponse($e);
         }

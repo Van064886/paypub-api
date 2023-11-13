@@ -17,6 +17,9 @@ class AdvertisementResource extends JsonResource
         return [
             "id" => $this->id,
             "name" => $this->name,
+            "reference" => $this->reference,
+            "total_clics" => $this->total_clics,
+            "total_amount" => $this->total_amount,
             "description" => $this->description,
             "picture" => is_null($this->picture) ? null
                 : asset('/uploads/ads') . '/' . $this->picture,
