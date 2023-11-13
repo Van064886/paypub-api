@@ -3,13 +3,13 @@
 namespace App\Core\Advertisements\Repositories;
 
 use App\Core\Advertisements\Advertisement;
-use App\Core\Advertisements\Repositories\Interfaces\AdvertisementsRepositoryInterface;
+use App\Core\Advertisements\Repositories\Interfaces\AdvertisementRepositoryInterface;
 use App\Core\BaseRepository;
 use App\Core\Tools\FileUploadTrait;
 use Illuminate\Http\UploadedFile;
 use Ramsey\Uuid\Uuid;
 
-class AdvertisementsRepository extends BaseRepository implements AdvertisementsRepositoryInterface
+class AdvertisementRepository extends BaseRepository implements AdvertisementRepositoryInterface
 {
     use FileUploadTrait;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Core\Advertisements\Advertisement;
-use App\Core\Advertisements\Repositories\Interfaces\AdvertisementsRepositoryInterface;
+use App\Core\Advertisements\Repositories\Interfaces\AdvertisementRepositoryInterface;
 use App\Core\Advertisements\Requests\AddAdvertisementRequest;
 use App\Core\Advertisements\Requests\UpdateAdvertisementRequest;
 use App\Http\Controllers\ApiBaseController;
@@ -17,7 +17,7 @@ class AdvertisementController extends ApiBaseController
     /**
      * Class construct
      */
-    public function __construct(private AdvertisementsRepositoryInterface $advertisementsRepo)
+    public function __construct(private AdvertisementRepositoryInterface $advertisementsRepo)
     {
     }
 

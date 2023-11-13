@@ -46,13 +46,13 @@
     </span>
 </a>
 <div class="tocify-wrapper">
-    
+
             <div class="lang-selector">
                                             <button type="button" class="lang-button" data-language-name="bash">bash</button>
                                             <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
                                             <button type="button" class="lang-button" data-language-name="php">php</button>
                     </div>
-    
+
     <div class="search">
         <input type="text" class="search" id="input-search" placeholder="Search">
     </div>
@@ -217,7 +217,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
         <h1 id="activity-sectors">Activity sectors</h1>
 
-    
+
 
                                 <h2 id="activity-sectors-GETactivity-sectors">Get the list of activity sectors</h2>
 
@@ -461,7 +461,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="authentication">Authentication</h1>
 
-    
+
 
                                 <h2 id="authentication-POSTauth-register">Register user</h2>
 
@@ -2068,7 +2068,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="endpoints">Endpoints</h1>
 
-    
+
 
                                 <h2 id="endpoints-GETsanctum-csrf-cookie">Return an empty response simply to trigger the storage of the CSRF cookie in the browser.</h2>
 
@@ -2791,7 +2791,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Target class [App\\Core\\Advertisements\\Repositories\\AdvertisementsRepository] does not exist.&quot;,
+    &quot;message&quot;: &quot;Target class [App\\Core\\Advertisements\\Repositories\\AdvertisementRepository] does not exist.&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Contracts\\Container\\BindingResolutionException&quot;,
     &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
     &quot;line&quot;: 914,
@@ -3441,7 +3441,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Target class [App\\Core\\Advertisements\\Repositories\\AdvertisementsRepository] does not exist.&quot;,
+    &quot;message&quot;: &quot;Target class [App\\Core\\Advertisements\\Repositories\\AdvertisementRepository] does not exist.&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Contracts\\Container\\BindingResolutionException&quot;,
     &quot;file&quot;: &quot;/home/van/Documents/DEV SPACE/Projects/Laravel/pubpay-api/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
     &quot;line&quot;: 914,
@@ -4684,7 +4684,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="enterprises">Enterprises</h1>
 
-    
+
 
                                 <h2 id="enterprises-GETenterprises--enterprise_id-">Get an enterprise</h2>
 
@@ -5246,7 +5246,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="social-medias">Social medias</h1>
 
-    
+
 
                                 <h2 id="social-medias-GETsocial-medias">Get the list of social medias</h2>
 
@@ -5426,7 +5426,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="users">Users</h1>
 
-    
+
 
                                 <h2 id="users-GETusers--id-">Show user</h2>
 
@@ -5905,9 +5905,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-            
 
-        
+
+
     </div>
     <div class="dark-box">
                     <div class="lang-selector">

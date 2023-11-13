@@ -5,7 +5,7 @@ namespace App\Core\Advertisements\Repositories\Interfaces;
 use App\Core\Advertisements\Advertisement;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-interface AdvertisementsRepositoryInterface
+interface AdvertisementRepositoryInterface
 {
     public function add(array $requestDatas): Advertisement;
 
