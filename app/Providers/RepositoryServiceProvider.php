@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Core\AdsSharingHistories\Repositories\AdsSharingHistoryRepository;
 use App\Core\AdsSharingHistories\Repositories\Interfaces\AdsSharingHistoryRepositoryInterface;
+use App\Core\AdsSubscriptions\Repositories\AdsSubscriptionRepository;
 use App\Core\AdsSubscriptions\Repositories\Interfaces\AdsSubscriptionRepositoryInterface;
 use App\Core\Advertisements\Repositories\AdvertisementRepository;
 use App\Core\Advertisements\Repositories\Interfaces\AdvertisementRepositoryInterface;
@@ -23,7 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
         [UserRepositoryInterface::class, UserRepository::class],
         [EnterpriseRepositoryInterface::class, EnterpriseRepository::class],
         [AdvertisementRepositoryInterface::class, AdvertisementRepository::class],
-        [AdsSubscriptionRepositoryInterface::class, AdsSubscriptionRepositoryInterface::class],
+        [AdsSubscriptionRepositoryInterface::class, AdsSubscriptionRepository::class],
         [AdsSharingHistoryRepositoryInterface::class, AdsSharingHistoryRepository::class],
     ];
 

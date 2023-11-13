@@ -4,9 +4,7 @@ namespace App\Core\AdsSubscriptions\Repositories;
 
 use App\Core\AdsSubscriptions\AdsSubscription;
 use App\Core\AdsSubscriptions\Repositories\Interfaces\AdsSubscriptionRepositoryInterface;
-use App\Core\Advertisements\Advertisement;
 use App\Core\BaseRepository;
-use App\Core\Users\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class AdsSubscriptionRepository extends BaseRepository implements AdsSubscriptionRepositoryInterface

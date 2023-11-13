@@ -34,8 +34,11 @@ class AdsSubscriptionController extends ApiBaseController
     {
         DB::beginTransaction();
         try {
+            $requestDatas = $request->validated();
+            $requestDatas['user_id'] = $request->user()->id;
+
             // Proceed to subscription
-            $adsSubscription = $this->adsSubscriptionRepo->add($request->validated());
+            $adsSubscription = $this->adsSubscriptionRepo->add($requestDatas);
 
             // Generate subscription socials trackers
             $this->adsSharingHistoryRepo->add($adsSubscription);
@@ -44,7 +47,7 @@ class AdsSubscriptionController extends ApiBaseController
             return $this->successResponse();
         } catch(Exception $e) {
             DB::rollBack();
-            return $this->errorResponse();
+            return $this->errorResponse($e);
         }
     }
 

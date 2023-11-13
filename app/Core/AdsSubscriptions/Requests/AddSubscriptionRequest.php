@@ -22,7 +22,6 @@ class AddSubscriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "user_id" => "integer|exists:users,id",
             "advertisement_id" => "integer|exists:advertisements,id"
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Core\AdsSubscriptions;
 
+use App\Core\AdsSharingHistories\AdsSharingHistory;
 use App\Core\Advertisements\Advertisement;
 use App\Core\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,6 +32,6 @@ class AdsSubscription extends Model
 
     public function sharingHistories(): HasMany
     {
-        return $this->hasMany(AdsSubscription::class);
+        return $this->hasMany(AdsSharingHistory::class, 'ads_subscription_id');
     }
 }

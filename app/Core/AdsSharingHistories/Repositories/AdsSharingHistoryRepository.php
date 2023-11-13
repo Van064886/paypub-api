@@ -30,10 +30,10 @@ class AdsSharingHistoryRepository extends  BaseRepository implements AdsSharingH
         $socialsMedias = SocialMedia::get();
 
         foreach ($socialsMedias as $key => $socialMedia) {
-            $history = $this->model;
+            $history = new AdsSharingHistory();
             $history->token = Uuid::uuid4()->toString();
             $history->social_media_id = $socialMedia->id;
-            $history->ads_subscription_id = $adsSubscription;
+            $history->ads_subscription_id = $adsSubscription->id;
             $history->gained_amount = 0;
             $history->save();
         }

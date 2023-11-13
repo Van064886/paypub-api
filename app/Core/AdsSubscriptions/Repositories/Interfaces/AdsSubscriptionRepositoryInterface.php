@@ -3,8 +3,6 @@
 namespace App\Core\AdsSubscriptions\Repositories\Interfaces;
 
 use App\Core\AdsSubscriptions\AdsSubscription;
-use App\Core\Advertisements\Advertisement;
-use App\Core\Users\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 interface AdsSubscriptionRepositoryInterface
