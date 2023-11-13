@@ -29,14 +29,15 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
      */
     public function add(array $requestDatas): Enterprise
     {
+        // Store the enterprise logo
+        if (isset($requestDatas['logo']) && $requestDatas['logo'] instanceof UploadedFile) {
+            $requestDatas["logo"] = $this->upload($requestDatas['logo'], 'logos');
+        }
+
+        // Fill datas in model and save
         $enterprise = $this->model->make($requestDatas);
         $enterprise->owner = $requestDatas['owner'];
         $enterprise->activity_sector = $requestDatas['activity_sector'];
-
-        // Store the enterprise logo
-        if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
-            $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'logos');
-        }
 
         $enterprise->save();
         return $enterprise;
@@ -56,12 +57,12 @@ class EnterpriseRepository extends BaseRepository implements EnterpriseRepositor
             $enterprise->activity_sector = $requestDatas["activity_sector"];
 
         // Update the enterprise the enterprise logo if it is provided
-        if (isset($requestDatas['picture']) && $requestDatas['picture'] instanceof UploadedFile) {
+        if (isset($requestDatas['logo']) && $requestDatas['logo'] instanceof UploadedFile) {
             if (file_exists(public_path("logos/{$enterprise->logo}"))) {
                 unlink(public_path("logos/{$enterprise->logo}"));
             }
 
-            $requestDatas["picture"] = $this->upload($requestDatas['picture'], 'logos');
+            $requestDatas["logo"] = $this->upload($requestDatas['logo'], 'logos');
         }
 
         // Update and return enterprise
