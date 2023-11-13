@@ -7,6 +7,7 @@ use App\Core\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AdsSubscription extends Model
 {
@@ -26,5 +27,10 @@ class AdsSubscription extends Model
     public function advertisement(): BelongsTo
     {
         return $this->belongsTo(Advertisement::class);
+    }
+
+    public function sharingHistories(): HasMany
+    {
+        return $this->hasMany(AdsSubscription::class);
     }
 }

@@ -37,6 +37,8 @@ class AdsSubscriptionController extends ApiBaseController
             $adsSubscription = $this->adsSubscriptionRepo->add($request->validated());
 
             // Generate subscription socials trackers
+            $this->adsSharingHistoryRepo->add($adsSubscription);
+            $adsSubscription->load('subscri')
             DB::commit();
             return $this->successResponse();
         } catch(Exception $e) {
