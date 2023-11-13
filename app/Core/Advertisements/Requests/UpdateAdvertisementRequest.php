@@ -30,7 +30,8 @@ class UpdateAdvertisementRequest extends FormRequest
             "start_date" => "date|nullable|after:".now(),
             "end_date" => "date|after:start_date|nullable",
             "total_amount" => "numeric|min:1",
-            "total_clics" => "numeric|min:1"
+            "total_clics" => "numeric|min:1",
+            'picture' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:4000'
         ];
     }
 }

@@ -41,7 +41,7 @@ class EnterpriseController extends ApiBaseController
             $enterprise->load('owner', 'activitySector');
             return $this->successResponse(data: new EnterpriseResource($enterprise), code: 201);
         } catch (Exception $e) {
-            return $this->errorResponse($e);
+            return $this->errorResponse();
         }
     }
 

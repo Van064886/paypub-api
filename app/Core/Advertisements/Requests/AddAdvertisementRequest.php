@@ -31,6 +31,7 @@ class AddAdvertisementRequest extends FormRequest
             "end_date" => "date|after:start_date|nullable",
             "total_amount" => "numeric|min:1|required",
             "total_clics" => "numeric|min:1|required",
+            'picture' => 'image|mimes:jpg,png,jpeg,gif,svg|max:4000'
         ];
     }
 }
